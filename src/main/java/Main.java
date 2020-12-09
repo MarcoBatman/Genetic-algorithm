@@ -7,7 +7,7 @@ public class Main extends PApplet {
     public static void main(String[] args) { PApplet.main("Main");
     }
     DNA dna = new DNA(this);
-
+    Graph graf = new Graph(this);
 
     @Override
     public void settings() {
@@ -26,7 +26,16 @@ public class Main extends PApplet {
     public void draw() {
         clear();
         background(255);
-        dna.findHighest();
+        textSize(32);
+        fill(0);
+        textAlign(CENTER);
+        text("Klik på musen for at lave en ny generation!\nDe generationer der er røde har den optimale løsning", width/2,25);
+        graf.display();
+
+
+    }
+    public void mouseClicked(){
+        dna.findHighest(graf);
         dna.findParrentPool();
         dna.makeChild();
         dna.mutate();

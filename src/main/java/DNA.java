@@ -12,26 +12,22 @@ int sum;
 
     DNA(PApplet p){
     this.p=p;
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 1000; i++) {
         taskeList.add(new Taske(p));}
         for (int i = 0; i < taskeList.size(); i++) {
             taskeList.get(i).makeinventory();
         }
 }
-void findHighest(){
+void findHighest(Graph liste){
     for (int i = 0; i < taskeList.size(); i++) {
         taskeList.get(i).findWorthAndWeight();
         if(taskeList.get(i).worth>highest&&taskeList.get(i).weight<5000){
             highest=taskeList.get(i).worth;
         }
-
-        p.println(highest);
-
     }
-    p.fill(0);
-    p.textSize(20);
-    p.text(highest, 0,p.height-100);
-    p.rect(50,p.height,50,-highest/10);
+        liste.getHighest(highest);
+    p.println(highest);
+    highest = 0;
 }
 void findParrentPool(){
     for (int i = 0; i < taskeList.size(); i++) {
@@ -46,7 +42,7 @@ void findParrentPool(){
     }
 void makeChild(){
         int j=0;
-    while(taskeList.size()<10001){
+    while(taskeList.size()<1001){
 
         ArrayList<Taske> parrents = new ArrayList<>();
         while(parrents.size()<3)
@@ -68,7 +64,7 @@ void mutate(){
         String[] heya = taskeList.get(i).inventory.split("");
         String coolieos = "";
         for (int j = 0; j < heya.length; j++) {
-            if(p.random(1)<0.2){
+            if(p.random(1)<0.01){
                 if(heya[j].equalsIgnoreCase("1")){
                     heya[j]="0";
                 }else{
