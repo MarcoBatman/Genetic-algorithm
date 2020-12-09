@@ -12,6 +12,7 @@ public class Main extends PApplet {
     @Override
     public void settings() {
         super.settings();
+        size(1500,500);
     }
 
     @Override
@@ -23,6 +24,8 @@ public class Main extends PApplet {
 
     @Override
     public void draw() {
+        clear();
+        background(255);
         dna.findHighest();
         dna.findParrentPool();
         dna.makeChild();

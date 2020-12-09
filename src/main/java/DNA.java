@@ -26,7 +26,12 @@ void findHighest(){
         }
 
         p.println(highest);
+
     }
+    p.fill(0);
+    p.textSize(20);
+    p.text(highest, 0,p.height-100);
+    p.rect(50,p.height,50,-highest/10);
 }
 void findParrentPool(){
     for (int i = 0; i < taskeList.size(); i++) {
@@ -63,7 +68,7 @@ void mutate(){
         String[] heya = taskeList.get(i).inventory.split("");
         String coolieos = "";
         for (int j = 0; j < heya.length; j++) {
-            if(p.random(1)<0.1){
+            if(p.random(1)<0.2){
                 if(heya[j].equalsIgnoreCase("1")){
                     heya[j]="0";
                 }else{
